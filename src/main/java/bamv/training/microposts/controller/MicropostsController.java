@@ -107,4 +107,17 @@ public class MicropostsController {
 
         return "redirect:/login";
     }
+    
+    @GetMapping("/users")
+    String users(Model model) {
+
+        // 全ユーザーを取得
+        List<UserDto> users = userService.findAllUsers();
+
+        // HTML に渡す
+        model.addAttribute("users", users);
+
+        return "users";
+    }
+
 }
